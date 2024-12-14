@@ -1,4 +1,4 @@
-﻿namespace VeriketForms
+﻿namespace VeriketForm
 {
     partial class Form1
     {
@@ -28,36 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            button1 = new Button();
             dtgList = new DataGridView();
-            btnTıkla = new Button();
             ((System.ComponentModel.ISupportInitialize)dtgList).BeginInit();
             SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(608, 259);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // dtgList
             // 
             dtgList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgList.Location = new Point(59, 123);
+            dtgList.Location = new Point(97, 205);
             dtgList.Name = "dtgList";
-            dtgList.Size = new Size(520, 150);
-            dtgList.TabIndex = 0;
-            dtgList.CellContentClick += dtgList_CellContentClick;
-            // 
-            // btnTıkla
-            // 
-            btnTıkla.Location = new Point(612, 194);
-            btnTıkla.Name = "btnTıkla";
-            btnTıkla.Size = new Size(75, 23);
-            btnTıkla.TabIndex = 1;
-            btnTıkla.Text = "Tıkla";
-            btnTıkla.UseVisualStyleBackColor = true;
+            dtgList.Size = new Size(403, 150);
+            dtgList.TabIndex = 1;
+            dtgList.CellClick += dtgList_CellClick;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnTıkla);
             Controls.Add(dtgList);
+            Controls.Add(button1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -67,7 +68,7 @@
 
         #endregion
 
+        private Button button1;
         private DataGridView dtgList;
-        private Button btnTıkla;
     }
 }

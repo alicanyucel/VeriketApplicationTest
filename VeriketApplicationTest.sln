@@ -5,12 +5,7 @@ VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeriketApplicationTest", "VeriketApplicationTest\VeriketApplicationTest.csproj", "{918F068E-F1D0-4A71-9327-A535F66A5498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeriketForms", "VeriketForms\VeriketForms.csproj", "{5E2F2683-1472-4EB1-9DB5-FA74A7D4D179}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D9749E49-FD98-45C4-B1A9-A84E0780E67F}"
-	ProjectSection(SolutionItems) = preProject
-		nlogconfg.xml = nlogconfg.xml
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeriketForm", "VeriketForm\VeriketForm.csproj", "{16C109BA-DF24-4ED0-B298-C0E740F21505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +17,10 @@ Global
 		{918F068E-F1D0-4A71-9327-A535F66A5498}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{918F068E-F1D0-4A71-9327-A535F66A5498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{918F068E-F1D0-4A71-9327-A535F66A5498}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E2F2683-1472-4EB1-9DB5-FA74A7D4D179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E2F2683-1472-4EB1-9DB5-FA74A7D4D179}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E2F2683-1472-4EB1-9DB5-FA74A7D4D179}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E2F2683-1472-4EB1-9DB5-FA74A7D4D179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C109BA-DF24-4ED0-B298-C0E740F21505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C109BA-DF24-4ED0-B298-C0E740F21505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C109BA-DF24-4ED0-B298-C0E740F21505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C109BA-DF24-4ED0-B298-C0E740F21505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
