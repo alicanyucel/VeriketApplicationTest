@@ -33,7 +33,19 @@ namespace VeriketApplicationTest
             string logMessage = DateTime.Now.ToString("g") + ": Log entry";
             File.AppendAllText(logFilePath, logMessage + Environment.NewLine);
         }
+        private void OnTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            string logFilePath = @"C:\Logs\log.csv";
+            string userName = Environment.UserName; // Kullanıcı adı
+            string machineName = Environment.MachineName; // Bilgisayar adı
+            string currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // Tarih
 
+            // CSV formatında log yazma
+            string logEntry = $"{currentTime},{userName},{machineName}\n";
+
+            // Dosyaya yazma
+            File.AppendAllText(logFilePath, logEntry);
+        }
 
 
         protected override void OnStop()
