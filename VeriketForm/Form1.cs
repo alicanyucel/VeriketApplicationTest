@@ -23,7 +23,7 @@ namespace VeriketForm
         private void Form1_Load(object sender, EventArgs e)
         {
             
-
+            LoadLogs();
             
         }
         private void Timer_Tick(object sender, EventArgs e)
