@@ -50,7 +50,7 @@
             dtgList.Name = "dtgList";
             dtgList.Size = new Size(403, 150);
             dtgList.TabIndex = 1;
-            dtgList.CellClick += dtgList_CellClick;
+         
             // 
             // Form1
             // 

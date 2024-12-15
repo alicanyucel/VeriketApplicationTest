@@ -1,73 +1,74 @@
 using NLog;
 using System;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace VeriketForm
 {
     public partial class Form1 : Form
     {
         private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+        private Timer _timer;
 
         public Form1()
         {
+
             InitializeComponent();
+            _timer = new Timer();
+            _timer.Interval = 60000; // 1 dakika
+            _timer.Tick += Timer_Tick;
+            _timer.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // DataGridView'e buton ekliyoruz
-            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.HeaderText = "Log Mesajý";
-            buttonColumn.Name = "btnLog";
-            buttonColumn.Text = "Log Yaz";
-            buttonColumn.UseColumnTextForButtonValue = true;
-            dtgList.Columns.Add(buttonColumn);
+            
 
-            // DataGridView'e örnek veri ekliyoruz
-            dtgList.Rows.Add("Örnek Veri 1");
-            dtgList.Rows.Add("Örnek Veri 2");
-
-            // DataGridView'deki buton týklama olayýný baðlama
-            dtgList.CellClick += dtgList_CellClick;
+            
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            LoadLogs();
         }
 
-        private void dtgList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void LoadLogs()
         {
-            // Buton kolonu týklanmýþsa, loglarý yazdýr
-            if (e.ColumnIndex == dtgList.Columns["btnLog"].Index)
+            string logFilePath = @"C:\Logs\log.csv";
+
+            if (File.Exists(logFilePath))
             {
-                // Log mesajlarýný yazdýrýyoruz
-                string logMessage = "Debug: Debug mesajý\nInfo: Info mesajý\nWarn: Warn mesajý\nError: Error mesajý";
+                var logLines = File.ReadAllLines(logFilePath);
+                var dataTable = new System.Data.DataTable();
 
-                // DataGridView'deki ilgili satýra log mesajý yazdýrýyoruz
-                dtgList.Rows[e.RowIndex].Cells["btnLog"].Value = logMessage;
+                // DataGridView için sütunlar ekleyelim
+                dataTable.Columns.Add("Tarih");
+                dataTable.Columns.Add("Kullanýcý Adý");
+                dataTable.Columns.Add("Bilgisayar Adý");
 
-                // Loglarý NLog ile konsola yazdýrýyoruz
-                logger.Debug("Debug mesajý");
-                logger.Info("Info mesajý");
-                logger.Warn("Warn mesajý");
-                logger.Error("Error mesajý");
+                // Her bir satýr için veriyi tabloya ekleyelim
+                foreach (var line in logLines)
+                {
+                    var parts = line.Split(',');
+                    if (parts.Length == 3)
+                    {
+                        dataTable.Rows.Add(parts[0], parts[1], parts[2]);
+                    }
+                }
+
+                // DataGridView'e veri bind etme
+                dtgList.DataSource = dataTable;
+            }
+            else
+            {
+                MessageBox.Show("Log dosyasý bulunamadý.");
             }
         }
+    
 
         // button1 týklama olayý, tüm satýrlara log mesajý yazacak
         private void button1_Click(object sender, EventArgs e)
         {
-            // Tüm satýrlara log mesajý ekliyoruz
-            string logMessage = $"Debug: Debug mesajý\nInfo: Info mesajý\nWarn: Warn mesajý\nError: Error mesajý";
-
-            // DataGridView'e log mesajlarýný yazdýrýyoruz
-            foreach (DataGridViewRow row in dtgList.Rows)
-            {
-                // Log mesajýný her satýra yazýyoruz
-                row.Cells["btnLog"].Value = logMessage;
-            }
-
-            // Loglarý NLog ile konsola yazdýrýyoruz
-            logger.Debug("Debug mesajý");
-            logger.Info("Info mesajý");
-            logger.Warn("Warn mesajý");
-            logger.Error("Error mesajý");
+            LoadLogs();
         }
     }
 }
